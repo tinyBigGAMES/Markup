@@ -168,7 +168,7 @@ Markup is built in the open. If it saves you time or sparks something useful:
 
 ## License
 
-Markup is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for details.
+Markup is licensed under the **Apache License 2.0**. See [LICENSE](https://github.com/tinyBigGAMES/Markup?tab=Apache-2.0-1-ov-file#readme) for details.
 
 Apache 2.0 is a permissive open source license that lets you use, modify, and distribute Markup freely in both open source and commercial projects. You are not required to release your own source code. The license includes an explicit patent grant. Attribution is required; keep the copyright notice and license file in place.
 
