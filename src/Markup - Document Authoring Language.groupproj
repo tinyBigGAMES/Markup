@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7F79FF4C-DAC6-443D-BE9E-25792EE16C5A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\api\Markup.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\testbed\Testbed.dproj">
+            <Dependencies>..\api\Markup.dproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Markup">
+        <MSBuild Projects="..\api\Markup.dproj"/>
+    </Target>
+    <Target Name="Markup:Clean">
+        <MSBuild Projects="..\api\Markup.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Markup:Make">
+        <MSBuild Projects="..\api\Markup.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Testbed" DependsOnTargets="Markup">
+        <MSBuild Projects="..\testbed\Testbed.dproj"/>
+    </Target>
+    <Target Name="Testbed:Clean" DependsOnTargets="Markup:Clean">
+        <MSBuild Projects="..\testbed\Testbed.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Testbed:Make" DependsOnTargets="Markup:Make">
+        <MSBuild Projects="..\testbed\Testbed.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Markup;Testbed"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Markup:Clean;Testbed:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Markup:Make;Testbed:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
